@@ -1,0 +1,11 @@
+
+entity GameIntro {
+  name String,
+  wallpaper ImageBlob,
+}
+
+
+
+service all with serviceImpl
+
+angularSuffix * with mySuffix

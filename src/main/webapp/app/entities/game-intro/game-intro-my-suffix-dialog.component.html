@@ -1,0 +1,47 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myGameIntroLabel" jhiTranslate="onceAgainGamesApp.gameIntro.home.createOrEditLabel">Create or edit a Game Intro</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!gameIntro.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="gameIntro.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="onceAgainGamesApp.gameIntro.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="gameIntro.name"  />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="onceAgainGamesApp.gameIntro.wallpaper" for="field_wallpaper">Wallpaper</label>
+            <div>
+                <img [src]="'data:' + gameIntro.wallpaperContentType + ';base64,' + gameIntro.wallpaper" style="max-height: 100px;" *ngIf="gameIntro.wallpaper" alt="gameIntro image"/>
+                <div *ngIf="gameIntro.wallpaper" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{gameIntro.wallpaperContentType}}, {{byteSize(gameIntro.wallpaper)}}</span>
+                    <button type="button" (click)="clearInputImage('wallpaper', 'wallpaperContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_wallpaper" (change)="setFileData($event, gameIntro, 'wallpaper', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="wallpaper" id="field_wallpaper"
+                [(ngModel)]="gameIntro.wallpaper"  />
+            <input type="hidden" class="form-control" name="wallpaperContentType" id="field_wallpaperContentType"
+                [(ngModel)]="gameIntro.wallpaperContentType" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

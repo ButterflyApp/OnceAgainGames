@@ -1,0 +1,22 @@
+{
+    "onceAgainGamesApp": {
+        "gameIntro" : {
+            "home": {
+                "title": "Game Intros",
+                "createLabel": "Create a new Game Intro",
+                "createOrEditLabel": "Create or edit a Game Intro"
+            },
+            "created": "A new Game Intro is created with identifier {{ param }}",
+            "updated": "A Game Intro is updated with identifier {{ param }}",
+            "deleted": "A Game Intro is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Game Intro {{ id }}?"
+            },
+            "detail": {
+                "title": "Game Intro"
+            },
+            "name": "Name",
+            "wallpaper": "Wallpaper"
+        }
+    }
+}
