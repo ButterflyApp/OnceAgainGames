@@ -1,0 +1,42 @@
+
+<div *ngIf="card">
+    <h2><span jhiTranslate="onceAgainGamesApp.card.detail.title">Card</span> {{card.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="onceAgainGamesApp.card.symbol">Symbol</span></dt>
+        <dd>
+            <span>{{card.symbol}}</span>
+        </dd>
+        <dt><span jhiTranslate="onceAgainGamesApp.card.colour">Colour</span></dt>
+        <dd>
+            <span>{{card.colour}}</span>
+        </dd>
+        <dt><span jhiTranslate="onceAgainGamesApp.card.value">Value</span></dt>
+        <dd>
+            <span>{{card.value}}</span>
+        </dd>
+        <dt><span jhiTranslate="onceAgainGamesApp.card.image">Image</span></dt>
+        <dd>
+            <div *ngIf="card.image">
+                <a (click)="openFile(card.imageContentType, card.image)">
+                    <img [src]="'data:' + card.imageContentType + ';base64,' + card.image" style="max-width: 100%;" alt="card image"/>
+                </a>
+                {{card.imageContentType}}, {{byteSize(card.image)}}
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'card-my-suffix/'+ card.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

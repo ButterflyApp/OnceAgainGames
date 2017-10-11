@@ -1,7 +1,13 @@
 
 entity GameIntro {
   name String,
-  wallpaper ImageBlob,
+  wallpaper ImageBlob
+}
+entity Card {
+  symbol String,
+  colour String,
+  value String,
+  image ImageBlob
 }
 
 
