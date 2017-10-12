@@ -4,10 +4,13 @@ entity GameIntro {
   wallpaper ImageBlob
 }
 entity Card {
-  symbol String,
-  colour String,
+  
+
+   type String,
   value String,
   image ImageBlob
+ 
+  
 }
 
 

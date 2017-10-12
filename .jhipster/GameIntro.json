@@ -12,7 +12,7 @@
             "fieldTypeBlobContent": "image"
         }
     ],
-    "changelogDate": "20171010092859",
+    "changelogDate": "20171012060316",
     "entityTableName": "game_intro",
     "dto": "no",
     "pagination": "no",

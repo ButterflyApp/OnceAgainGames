@@ -21,11 +21,8 @@ public class Card implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "symbol")
-    private String symbol;
-
-    @Column(name = "colour")
-    private String colour;
+    @Column(name = "jhi_type")
+    private String type;
 
     @Column(name = "jhi_value")
     private String value;
@@ -46,30 +43,17 @@ public class Card implements Serializable {
         this.id = id;
     }
 
-    public String getSymbol() {
-        return symbol;
+    public String getType() {
+        return type;
     }
 
-    public Card symbol(String symbol) {
-        this.symbol = symbol;
+    public Card type(String type) {
+        this.type = type;
         return this;
     }
 
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
-    }
-
-    public String getColour() {
-        return colour;
-    }
-
-    public Card colour(String colour) {
-        this.colour = colour;
-        return this;
-    }
-
-    public void setColour(String colour) {
-        this.colour = colour;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getValue() {
@@ -136,8 +120,7 @@ public class Card implements Serializable {
     public String toString() {
         return "Card{" +
             "id=" + getId() +
-            ", symbol='" + getSymbol() + "'" +
-            ", colour='" + getColour() + "'" +
+            ", type='" + getType() + "'" +
             ", value='" + getValue() + "'" +
             ", image='" + getImage() + "'" +
             ", imageContentType='" + imageContentType + "'" +

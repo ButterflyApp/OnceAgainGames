@@ -9,12 +9,12 @@
                     <div style="margin: 0cm 0cm 0cm 2cm; background-color: white; "><br>
 
                         <div class="thumbnail" *ngIf="game.wallpaper" style="margin: 0cm 0cm 0cm 1cm;font-family: Times New Roman;">
-                           
-                            <button style="margin: 1.5cm 8cm 0cm 0cm;" class="btn btn-primary float-right jh-create-entity create-card-my-suffix" [routerLink]="['/', { outlets: { popup: ['card-my-suffix-new'] } }]">
-                                    <span class="fa fa-plus"></span>
-                                    Start Game
-                                    </span>
-                                </button> 
+
+                            <!-- <button style="margin: 1.5cm 8cm 0cm 0cm;" class="btn btn-primary float-right jh-create-entity create-card-my-suffix" [routerLink]="['/', { outlets: { popup: ['card-my-suffix-new'] } }]">
+                                        <span class="fa fa-plus"></span>
+                                        Start Game
+                                        </span>
+                                    </button> -->
                             <img [src]="'data:' + game.wallpaperContentType + ';base64,' + game.wallpaper" style="width: 150px; height: 150px;" alt="Nature">
                             <h2>{{game.name}}</h2>
                         </div>

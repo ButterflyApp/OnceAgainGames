@@ -15,8 +15,7 @@
             "detail": {
                 "title": "Card"
             },
-            "symbol": "Symbol",
-            "colour": "Colour",
+            "type": "Type",
             "value": "Value",
             "image": "Image"
         }

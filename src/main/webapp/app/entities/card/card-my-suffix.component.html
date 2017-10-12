@@ -17,8 +17,7 @@
             <thead>
             <tr>
             <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="onceAgainGamesApp.card.symbol">Symbol</span></th>
-            <th><span jhiTranslate="onceAgainGamesApp.card.colour">Colour</span></th>
+            <th><span jhiTranslate="onceAgainGamesApp.card.type">Type</span></th>
             <th><span jhiTranslate="onceAgainGamesApp.card.value">Value</span></th>
             <th><span jhiTranslate="onceAgainGamesApp.card.image">Image</span></th>
             <th></th>
@@ -27,8 +26,7 @@
             <tbody>
             <tr *ngFor="let card of cards ;trackBy: trackId">
                 <td><a [routerLink]="['../card-my-suffix', card.id ]">{{card.id}}</a></td>
-                <td>{{card.symbol}}</td>
-                <td>{{card.colour}}</td>
+                <td>{{card.type}}</td>
                 <td>{{card.value}}</td>
                 <td>
                     <a *ngIf="card.image" (click)="openFile(card.imageContentType, card.image)">

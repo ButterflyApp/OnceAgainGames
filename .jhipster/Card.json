@@ -3,11 +3,7 @@
     "relationships": [],
     "fields": [
         {
-            "fieldName": "symbol",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "colour",
+            "fieldName": "type",
             "fieldType": "String"
         },
         {
@@ -20,7 +16,7 @@
             "fieldTypeBlobContent": "image"
         }
     ],
-    "changelogDate": "20171010110357",
+    "changelogDate": "20171012060317",
     "entityTableName": "card",
     "dto": "no",
     "pagination": "no",

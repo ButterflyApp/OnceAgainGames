@@ -39,11 +39,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = OnceAgainGamesApp.class)
 public class CardResourceIntTest {
 
-    private static final String DEFAULT_SYMBOL = "AAAAAAAAAA";
-    private static final String UPDATED_SYMBOL = "BBBBBBBBBB";
-
-    private static final String DEFAULT_COLOUR = "AAAAAAAAAA";
-    private static final String UPDATED_COLOUR = "BBBBBBBBBB";
+    private static final String DEFAULT_TYPE = "AAAAAAAAAA";
+    private static final String UPDATED_TYPE = "BBBBBBBBBB";
 
     private static final String DEFAULT_VALUE = "AAAAAAAAAA";
     private static final String UPDATED_VALUE = "BBBBBBBBBB";
@@ -93,8 +90,7 @@ public class CardResourceIntTest {
      */
     public static Card createEntity(EntityManager em) {
         Card card = new Card()
-            .symbol(DEFAULT_SYMBOL)
-            .colour(DEFAULT_COLOUR)
+            .type(DEFAULT_TYPE)
             .value(DEFAULT_VALUE)
             .image(DEFAULT_IMAGE)
             .imageContentType(DEFAULT_IMAGE_CONTENT_TYPE);
@@ -121,8 +117,7 @@ public class CardResourceIntTest {
         List<Card> cardList = cardRepository.findAll();
         assertThat(cardList).hasSize(databaseSizeBeforeCreate + 1);
         Card testCard = cardList.get(cardList.size() - 1);
-        assertThat(testCard.getSymbol()).isEqualTo(DEFAULT_SYMBOL);
-        assertThat(testCard.getColour()).isEqualTo(DEFAULT_COLOUR);
+        assertThat(testCard.getType()).isEqualTo(DEFAULT_TYPE);
         assertThat(testCard.getValue()).isEqualTo(DEFAULT_VALUE);
         assertThat(testCard.getImage()).isEqualTo(DEFAULT_IMAGE);
         assertThat(testCard.getImageContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_TYPE);
@@ -158,8 +153,7 @@ public class CardResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(card.getId().intValue())))
-            .andExpect(jsonPath("$.[*].symbol").value(hasItem(DEFAULT_SYMBOL.toString())))
-            .andExpect(jsonPath("$.[*].colour").value(hasItem(DEFAULT_COLOUR.toString())))
+            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
             .andExpect(jsonPath("$.[*].value").value(hasItem(DEFAULT_VALUE.toString())))
             .andExpect(jsonPath("$.[*].imageContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_TYPE)))
             .andExpect(jsonPath("$.[*].image").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE))));
@@ -176,8 +170,7 @@ public class CardResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(card.getId().intValue()))
-            .andExpect(jsonPath("$.symbol").value(DEFAULT_SYMBOL.toString()))
-            .andExpect(jsonPath("$.colour").value(DEFAULT_COLOUR.toString()))
+            .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
             .andExpect(jsonPath("$.value").value(DEFAULT_VALUE.toString()))
             .andExpect(jsonPath("$.imageContentType").value(DEFAULT_IMAGE_CONTENT_TYPE))
             .andExpect(jsonPath("$.image").value(Base64Utils.encodeToString(DEFAULT_IMAGE)));
@@ -202,8 +195,7 @@ public class CardResourceIntTest {
         // Update the card
         Card updatedCard = cardRepository.findOne(card.getId());
         updatedCard
-            .symbol(UPDATED_SYMBOL)
-            .colour(UPDATED_COLOUR)
+            .type(UPDATED_TYPE)
             .value(UPDATED_VALUE)
             .image(UPDATED_IMAGE)
             .imageContentType(UPDATED_IMAGE_CONTENT_TYPE);
@@ -217,8 +209,7 @@ public class CardResourceIntTest {
         List<Card> cardList = cardRepository.findAll();
         assertThat(cardList).hasSize(databaseSizeBeforeUpdate);
         Card testCard = cardList.get(cardList.size() - 1);
-        assertThat(testCard.getSymbol()).isEqualTo(UPDATED_SYMBOL);
-        assertThat(testCard.getColour()).isEqualTo(UPDATED_COLOUR);
+        assertThat(testCard.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testCard.getValue()).isEqualTo(UPDATED_VALUE);
         assertThat(testCard.getImage()).isEqualTo(UPDATED_IMAGE);
         assertThat(testCard.getImageContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_TYPE);
